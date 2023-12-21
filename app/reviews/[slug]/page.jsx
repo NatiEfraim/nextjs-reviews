@@ -2,19 +2,19 @@ import Heading from "@/components/Heading";
 import { getReview, getSlugs } from "@/lib/reviews";
 import ShareLinkButton from "@/components/ShareLinkButton";
 
+// export async function generateStaticParams() {
+//   const slugs = await getSlugs();
+//   return slugs.map((slug) => ({ slug }));
+// }
+
 ////set dynamic title.
 export async function generateMetadata({ params: { slug } }) {
   const review = await getReview(slug);
+  console.log("[ReviewPage] review", review);
   return {
     title: review.title,
   };
 }
-
-export async function generateStaticParams() {
-  const slugs = await getSlugs();
-  return slugs.map((slug) => ({ slug }));
-}
-
 export default async function ReviewPage({ params: { slug } }) {
   const review = await getReview(slug);
   return (
