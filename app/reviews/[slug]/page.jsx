@@ -2,10 +2,11 @@ import Heading from "@/components/Heading";
 import { getReview, getSlugs } from "@/lib/reviews";
 import ShareLinkButton from "@/components/ShareLinkButton";
 
-// export async function generateStaticParams() {
-//   const slugs = await getSlugs();
-//   return slugs.map((slug) => ({ slug }));
-// }
+export async function generateStaticParams() {
+  const slugs = await getSlugs();
+  console.log("[ReviewPage] generateStaticParams:", slugs);
+  return slugs.map((slug) => ({ slug }));
+}
 
 ////set dynamic title.
 export async function generateMetadata({ params: { slug } }) {
